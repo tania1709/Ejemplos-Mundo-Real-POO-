@@ -1,0 +1,14 @@
+# Clase Empresa
+class Empresa:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.departamentos = []
+
+    def agregar_departamento(self, departamento):
+        self.departamentos.append(departamento)
+        print(f"Departamento {departamento.nombre} agregado a la empresa {self.nombre}")
+
+    def mostrar_departamentos(self):
+        print(f"Departamentos de la empresa {self.nombre}:")
+        for departamento in self.departamentos:
+            print(departamento.nombre)
