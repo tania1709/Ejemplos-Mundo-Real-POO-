@@ -1,0 +1,50 @@
+Tienda de Libros
+
+
+class Libro:
+    def __init__(self, titulo, autor, precio):
+        self.titulo = titulo
+        self.autor = autor
+        self.precio = precio
+
+    def __str__(self):
+        return f"{self.titulo} de {self.autor}, ${self.precio}"
+
+class Tienda:
+    def __init__(self, nombre, direccion):
+        self.nombre = nombre
+        self.direccion = direccion
+        self.libros = []
+
+    def agregar_libro(self, libro):
+        self.libros.append(libro)
+        print(f"Libro {libro.titulo} agregado a la tienda.")
+
+    def vender_libro(self, titulo):
+        for libro in self.libros:
+            if libro.titulo == titulo:
+                self.libros.remove(libro)
+                print(f"Libro {titulo} vendido.")
+                return
+        print(f"No hay libros con el título {titulo}.")
+
+class Cliente:
+    def __init__(self, nombre, apellido, telefono):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.telefono = telefono
+
+    def comprar_libro(self, tienda, titulo):
+        tienda.vender_libro(titulo)
+        print(f"Libro comprado por {self.nombre} {self.apellido}.")
+
+# Crear objetos
+libro1 = Libro("Caperucita Roja", "J.R.R. Tolkien", 20)
+libro2 = Libro("Caperucita Roja", "J.K. Rowling", 15)
+tienda = Tienda("Librería Mendéz", "Calle 123")
+cliente = Cliente("Ana", "Patricia", "123456789")
+
+# Interacción entre objetos
+tienda.agregar_libro(libro1)
+tienda.agregar_libro(libro2)
+cliente.comprar_libro(tienda, "Caperucita Roja")

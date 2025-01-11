@@ -1,0 +1,41 @@
+Sistema de Reservas de Hotel
+
+
+class Hotel:
+    def __init__(self, nombre, direccion, num_habitaciones):
+        self.nombre = nombre
+        self.direccion = direccion
+        self.num_habitaciones = num_habitaciones
+        self.habitaciones_disponibles = num_habitaciones
+
+    def reservar_habitacion(self):
+        if self.habitaciones_disponibles > 0:
+            self.habitaciones_disponibles -= 1
+            print("Habitación reservada con éxito.")
+        else:
+            print("Lo sentimos, no hay habitaciones disponibles.")
+
+    def cancelar_reserva(self):
+        if self.habitaciones_disponibles < self.num_habitaciones:
+            self.habitaciones_disponibles += 1
+            print("Reserva cancelada con éxito.")
+        else:
+            print("No hay reservas para cancelar.")
+
+class Cliente:
+    def __init__(self, nombre, apellido, telefono):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.telefono = telefono
+
+    def realizar_reserva(self, hotel):
+        hotel.reservar_habitacion()
+        print(f"Reserva realizada por {self.nombre} {self.apellido}.")
+
+# Crear objetos
+hotel = Hotel("Hotel Plaza", "Calle 123", 10)
+cliente = Cliente("Alex", "Dominguez", "123456789")
+
+# Interacción entre objetos
+cliente.realizar_reserva(hotel)
+hotel.cancelar_reserva()
